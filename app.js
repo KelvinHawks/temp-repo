@@ -1,6 +1,12 @@
-const _ = require('lodash')
+const eventEmitter = require('events')
 
-const items = [1, [2,[3,[4]]]]
-const newItems = _.flattenDeep(items)
+const customEmitter = new eventEmitter()
 
-console.log(newItems);
+customEmitter.on('response', ()=>{
+    console.log('event emitted');
+})
+customEmitter.on('response', ()=>{
+    console.log('some other logic here');
+})
+
+customEmitter.emit('response')
